@@ -1,4 +1,4 @@
-# Practical 6: Collision Detection with cute_c2
+# Practical 7: Collision Detection with cute_c2
 
 In this practical you'll make shapes bump into each other. A player circle follows your mouse and changes colour when it hits an NPC. Your job is to teach it about capsules and rays as well.
 
