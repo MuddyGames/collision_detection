@@ -9,12 +9,12 @@ BEGIN
     BLOCK "040904E4"    // English US
     BEGIN
       VALUE "CompanyName", "MuddyGames"
-      VALUE "FileDescription", "Drawing Primitives | Drawing Primitives in Raylib"
+      VALUE "FileDescription", "Collision Detection | Collision Detection in raylib with cute_c2"
       VALUE "FileVersion", "1.0"
       VALUE "InternalName", "collision_detection"
       VALUE "LegalCopyright", "(c) 2026 MuddyGames"
       //VALUE "OriginalFilename", "collision_detection.exe"
-      VALUE "ProductName", "Drawing Primitives"
+      VALUE "ProductName", "Collision Detection"
       VALUE "ProductVersion", "1.0"
     END
   END
