@@ -11,7 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
-      <UniqueIdentifier>{88cfb6c3-6abc-4c24-99c6-639f6e18ca8f}</UniqueIdentifier>
+      <UniqueIdentifier>{d1866734-1435-5e3b-b82e-92efbeaa1874}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,6 +22,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\game.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\game_object.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\tests.h">
