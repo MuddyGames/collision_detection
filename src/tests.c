@@ -22,7 +22,7 @@ void TestCollisions(void)
 
 	int result = collision(player, npc);
 
-	TraceLog(LOG_INFO, result ? "Simple Circle Collision": "All Safe");
+	TraceLog(LOG_INFO, result ? "Simple Circle Collision" : "All Safe");
 
 	player.x = 100;
 	player.y = 100;
@@ -34,7 +34,7 @@ void TestCollisions(void)
 
 	result = collision(player, npc);
 
-	TraceLog(LOG_INFO, result ? "Simple Circle Collision": "All Safe");
+	TraceLog(LOG_INFO, result ? "Simple Circle Collision" : "All Safe");
 
 	npc.x = 180;
 	npc.y = 180;
@@ -42,8 +42,46 @@ void TestCollisions(void)
 
 	result = collision(player, npc);
 
-	TraceLog(LOG_INFO, result ? "Simple Circle Collision": "All Safe");
+	TraceLog(LOG_INFO, result ? "Simple Circle Collision" : "All Safe");
 
+	// Collision Report: same circles, so predict first!
+	// Centres 80 apart, radii add to 100 -> depth 20, normal (1, 0)
+	CollisionReport report = collisionReport(player, npc);
+
+	TraceLog(LOG_INFO, "Collision Report as follows: count=%d depth=%.1f n=(%.2f, %.2f) contact=(%.1f, %.1f)",
+			 report.count, report.depth, report.normal_x, report.normal_y, report.contact_x, report.contact_y);
+
+	// Fix it: push player back out
+	resolveCollision(&player, report);
+
+	npc.x = 180;
+	npc.y = 100;
+
+	report = collisionReport(player, npc);
+
+	TraceLog(LOG_INFO, "Collision Report as follows: count=%d depth=%.1f n=(%.2f, %.2f) contact=(%.1f, %.1f)",
+			 report.count, report.depth, report.normal_x, report.normal_y, report.contact_x, report.contact_y);
+
+	// Fix it: push player back out
+	resolveCollision(&player, report);
+
+	TraceLog(LOG_INFO, "Player after resolve: (%.1f, %.1f) -> %s",
+			 player.x, player.y,
+			 collision(player, npc) ? "Touching" : "All Safe");
+
+	// Note: after resolving they are exactly touching, and our
+	// collision() uses <= so touching still counts as a collision
+
+	player.x = 100; // put the player back for the next tests
+	player.y = 100;
+
+	npc.x = 180;
+	npc.y = 180;
+	npc.r = 50;
+
+	result = collision(player, npc);
+
+	TraceLog(LOG_INFO, result ? "Simple Circle Collision" : "All Safe");
 
 	// Test 1: Circle to Circle
 	c2Circle c1 = {{100, 100}, 50};
