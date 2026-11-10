@@ -84,7 +84,7 @@ static void DrawNPC(const NPC *npc)
 // Initialise Game Data
 void InitGame(GameData *data)
 {
-	printf("Game Initialized!\n");
+	TraceLog(LOG_INFO, "Game Initialising");
 
 	data->points = 0; // Initialise points to zero
 
@@ -102,6 +102,8 @@ void InitGame(GameData *data)
 
 	// Load player texture
 	data->player.texture = LoadTexture("resources/player.png");
+
+	TraceLog(LOG_INFO, "Game Initialised");
 }
 
 // Update Game Data
@@ -231,11 +233,11 @@ void DrawGame(const GameData *data)
 // Close Game and free resources
 void CloseGame(GameData *data)
 {
-	printf("Game Closed!\n");
-
 	// Uload player texture
 	UnloadTexture(data->player.texture);
 
 	// Free up and resources
 	free(data); // Free the allocated memory for GameData
+
+	TraceLog(LOG_INFO, "Game Closed");
 }

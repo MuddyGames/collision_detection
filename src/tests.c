@@ -6,13 +6,14 @@
 
 void TestCollisions(void)
 {
-	printf("Collision Tests\n");
+	TraceLog(LOG_INFO, "Collision Tests");
 
 	// Test 1: Circle to Circle
 	c2Circle c1 = {{100, 100}, 50};
 	c2Circle c2 = {{180, 100}, 50};
-	printf("Circle-Circle (overlapping ?): %s\n",
-		c2CircletoCircle(c1, c2) ? "PASS" : "FAIL");
+
+	TraceLog(LOG_INFO, "Circle-Circle (overlapping ?): %s\n",
+			 c2CircletoCircle(c1, c2) ? "PASS" : "FAIL");
 
 	// Test 2: Ray to Circle
 	// Ray starting at (0,100) going right with length 200
@@ -20,8 +21,9 @@ void TestCollisions(void)
 
 	// c2Raycast to store result
 	c2Raycast out;
-	printf("Ray-Circle (hit ?): %s\n",
-		c2RaytoCircle(ray, c1, &out) ? "PASS" : "FAIL");
+
+	TraceLog(LOG_INFO, "Ray-Circle (hit ?): %s\n",
+			 c2RaytoCircle(ray, c1, &out) ? "PASS" : "FAIL");
 
 	// Add more tests...
 }

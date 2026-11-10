@@ -11,6 +11,11 @@ void GameLoop(GameData *data);
 // Main Entry Point
 int main(void)
 {
+	// Raylibs Log Level
+	// Saves on using printf
+	// Can be switch off with a flag or compile option
+	SetTraceLogLevel(LOG_ALL);
+
 	// Run Collision Tests
 	TestCollisions();
 
