@@ -36,14 +36,14 @@ CollisionReport collisionReport(Circle lhs, Circle rhs)
     float distance_between_x = rhs.x - lhs.x;
     float distance_between_y = rhs.y - lhs.y;
 
-    // Need the real distance, not squared, expensive sqrt
-    float distance = sqrtf((distance_between_x * distance_between_x) + (distance_between_y * distance_between_y));
+    // Need real separation, not squared, expensive sqrt
+    float separation = sqrtf((distance_between_x * distance_between_x) + (distance_between_y * distance_between_y));
 
     // Which way? Normalise vector from lhs to rhs
-    if (distance > 0.0f)
+    if (separation > 0.0f)
     {
-        report.normal_x = distance_between_x / distance;
-        report.normal_y = distance_between_y / distance;
+        report.normal_x = distance_between_x / separation;
+        report.normal_y = distance_between_y / separation;
     }
     else
     {
@@ -52,8 +52,8 @@ CollisionReport collisionReport(Circle lhs, Circle rhs)
         report.normal_y = 1.0f;
     }
 
-    // How far? Sum of radii minus actual distance
-    report.depth = (lhs.r + rhs.r) - distance;
+    // How far? Sum of radii minus actual separation
+    report.depth = (lhs.r + rhs.r) - separation;
 
     // Where? A point on rhs edge, facing lhs
     report.contact_x = rhs.x - report.normal_x * rhs.r;
