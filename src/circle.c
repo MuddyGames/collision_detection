@@ -1,3 +1,4 @@
+#include <math.h>
 #include "circle.h"
 
 int collision(Circle lhs, Circle rhs)
@@ -25,7 +26,7 @@ int collision(Circle lhs, Circle rhs)
 
 CollisionReport collisionReport(Circle lhs, Circle rhs)
 {
-	CollisionReport report = {0}; // count = 0, everything zeroed
+	CollisionReport report = {0}; // is_colliding = 0, everything zeroed
 
 	// Not colliding? Return an empty report
 	if (!collision(lhs, rhs))
@@ -70,14 +71,14 @@ CollisionReport collisionReport(Circle lhs, Circle rhs)
 	report.contact_x = rhs.x - report.normal_x * rhs.r;
 	report.contact_y = rhs.y - report.normal_y * rhs.r;
 
-	report.count = 1;
+	report.is_colliding = 1;
 
 	return report;
 }
 
 void resolveCollision(Circle *lhs, CollisionReport report)
 {
-	if (report.count == 0)
+	if (report.is_colliding == 0)
 	{
 		return; // nothing to fix
 	}

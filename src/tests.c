@@ -48,8 +48,8 @@ void TestCollisions(void)
 	// Centres 80 apart, radii add to 100 -> depth 20, normal (1, 0)
 	CollisionReport report = collisionReport(player, npc);
 
-	TraceLog(LOG_INFO, "Collision Report as follows: count=%d depth=%.1f n=(%.2f, %.2f) contact=(%.1f, %.1f)",
-			 report.count, report.depth, report.normal_x, report.normal_y, report.contact_x, report.contact_y);
+	TraceLog(LOG_INFO, "Collision Report as follows: is_colliding=%d depth=%.1f n=(%.2f, %.2f) contact=(%.1f, %.1f)",
+			 report.is_colliding, report.depth, report.normal_x, report.normal_y, report.contact_x, report.contact_y);
 
 	// Fix it: push player back out
 	resolveCollision(&player, report);
@@ -59,8 +59,8 @@ void TestCollisions(void)
 
 	report = collisionReport(player, npc);
 
-	TraceLog(LOG_INFO, "Collision Report as follows: count=%d depth=%.1f n=(%.2f, %.2f) contact=(%.1f, %.1f)",
-			 report.count, report.depth, report.normal_x, report.normal_y, report.contact_x, report.contact_y);
+	TraceLog(LOG_INFO, "Collision Report as follows: is_colliding=%d depth=%.1f n=(%.2f, %.2f) contact=(%.1f, %.1f)",
+			 report.is_colliding, report.depth, report.normal_x, report.normal_y, report.contact_x, report.contact_y);
 
 	// Fix it: push player back out
 	resolveCollision(&player, report);
