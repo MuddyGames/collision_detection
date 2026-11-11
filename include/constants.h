@@ -11,7 +11,7 @@
 // Define the number of NPCs
 #define NUM_NPCS 3
 
-// Default Pushback Distance
-#define PUSHBACK_DISTANCE 0.5f
+// Default Pushback Ratio
+#define PUSHBACK_RATIO 0.5f
 
 #endif // CONSTANTS_H

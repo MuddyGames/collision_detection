@@ -12,6 +12,7 @@ typedef struct Circle
 // Which way, point the finger? normal(unit vector pointing from lhs to rhs)
 // How far, two hands how deep? depth (how much the circles overlap)
 // Where, it touched here? contact point
+// Another name for this is a "manifold" in physics engines, but we don't need to get that fancy
 typedef struct CollisionReport
 {
     int count;      // 0 = not colliding, 1 = colliding

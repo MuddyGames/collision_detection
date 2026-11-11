@@ -146,7 +146,9 @@ void UpdateGame(GameData *data)
 					// npc->manifold.depths[0] is the penetration depth
 					float depth = npc->manifold.depths[0];
 					// Does not allow the player to penetrate the circle
-					data->player.circle.p = c2Sub(data->player.circle.p, c2Mulvs(npc->manifold.n, depth + PUSHBACK_DISTANCE));
+					// data->player.circle.p = c2Sub(data->player.circle.p, c2Mulvs(npc->manifold.n, depth * PUSHBACK_RATIO));
+					// Player is mouse, so move NPC
+					npc->collider.circle.p = c2Add(npc->collider.circle.p, c2Mulvs(npc->manifold.n, depth * PUSHBACK_RATIO));
 				}
 			}
 			break;
